@@ -7,6 +7,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 export const ContactForm = () => {
   const { toast } = useToast();
+  const [webhookUrl, setWebhookUrl] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,7 +16,7 @@ export const ContactForm = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -28,7 +29,27 @@ export const ContactForm = () => {
       return;
     }
 
-    // Here you would integrate with your backend/CRM
+    // Send to webhook if configured
+    if (webhookUrl) {
+      try {
+        await fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          mode: "no-cors",
+          body: JSON.stringify({
+            ...formData,
+            timestamp: new Date().toISOString(),
+            source: "landing_page",
+          }),
+        });
+        console.log("Dados enviados para webhook:", webhookUrl);
+      } catch (error) {
+        console.error("Erro ao enviar para webhook:", error);
+      }
+    }
+
     toast({
       title: "Mensagem enviada!",
       description: "Entraremos em contato em até 24 horas.",
@@ -131,6 +152,22 @@ export const ContactForm = () => {
           {/* Form */}
           <div className="lg:col-span-2">
             <form onSubmit={handleSubmit} className="bg-card p-8 rounded-xl shadow-elegant space-y-6">
+              {/* Webhook Configuration */}
+              <div className="p-4 bg-accent/10 rounded-lg border border-accent/20 space-y-2">
+                <label htmlFor="webhook" className="text-sm font-medium text-card-foreground flex items-center gap-2">
+                  🔗 URL do Webhook (opcional)
+                </label>
+                <Input
+                  id="webhook"
+                  value={webhookUrl}
+                  onChange={(e) => setWebhookUrl(e.target.value)}
+                  placeholder="https://hooks.zapier.com/hooks/catch/..."
+                  className="bg-card"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Cole aqui a URL do seu webhook (Zapier, Make, n8n, etc.) para receber os dados automaticamente
+                </p>
+              </div>
               <div className="grid sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-card-foreground">
