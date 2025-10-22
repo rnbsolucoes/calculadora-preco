@@ -1,6 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { ValueProposition } from "@/components/ValueProposition";
-import { SocialProof } from "@/components/SocialProof";
+import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Features } from "@/components/Features";
 import { FinalCTA } from "@/components/FinalCTA";
@@ -13,7 +13,7 @@ const Index = () => {
     <main className="min-h-screen">
       <Hero />
       <ValueProposition />
-      <SocialProof />
+      <WhyChooseUs />
       <HowItWorks />
       <Features />
       <FinalCTA />

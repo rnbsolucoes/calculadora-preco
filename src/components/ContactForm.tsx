@@ -110,7 +110,7 @@ export const ContactForm = () => {
                   <div>
                     <div className="font-semibold text-foreground">Localização</div>
                     <p className="text-muted-foreground">
-                      São Paulo, SP
+                      Viçosa do Ceará, CE
                       <br />
                       Atendemos todo Brasil
                     </p>

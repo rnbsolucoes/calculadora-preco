@@ -16,7 +16,7 @@ export const Hero = () => {
             <div className="inline-flex items-center gap-2 bg-primary-light px-4 py-2 rounded-full">
               <CheckCircle2 className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium text-primary">
-                +200 empresas transformadas
+                Soluções personalizadas de IA e automação
               </span>
             </div>
 
@@ -50,18 +50,18 @@ export const Hero = () => {
             {/* Trust Indicators */}
             <div className="flex flex-wrap items-center gap-8 pt-4">
               <div>
-                <div className="text-3xl font-bold text-primary">98%</div>
-                <div className="text-sm text-muted-foreground">Satisfação</div>
+                <div className="text-3xl font-bold text-primary">100%</div>
+                <div className="text-sm text-muted-foreground">Personalizado</div>
               </div>
               <div className="h-12 w-px bg-border" />
               <div>
-                <div className="text-3xl font-bold text-primary">+500h</div>
-                <div className="text-sm text-muted-foreground">Economizadas/mês</div>
+                <div className="text-3xl font-bold text-primary">2 semanas</div>
+                <div className="text-sm text-muted-foreground">Primeiros resultados</div>
               </div>
               <div className="h-12 w-px bg-border" />
               <div>
-                <div className="text-3xl font-bold text-primary">ROI 5x</div>
-                <div className="text-sm text-muted-foreground">Em média</div>
+                <div className="text-3xl font-bold text-primary">24/7</div>
+                <div className="text-sm text-muted-foreground">Suporte dedicado</div>
               </div>
             </div>
           </div>
